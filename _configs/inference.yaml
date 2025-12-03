@@ -1,0 +1,23 @@
+experiment_project: 'Mitty'
+experiment_name: 'inference'
+model_id:    "/Path/to/Wan2.2-TI2V-5B-Diffusers"
+output_root: '/Path/to/Output_Path'
+use_DiffSynth: True
+use_drop_text: True
+use_lora: True
+
+training:
+
+dataset:
+  video_root:  '/Path/to/Human_Videos/' # input video path
+  video_root2: '/Path/to/Robot_Videos/' # ground truth video path, you can use the same path as video_root if not available
+  first_root:  '/Path/to/First_Frame/'  # first frame path, leave an empty directory (/Path/to/Empty/) if not used
+  is_one2three: True
+  height: 224
+  width: 416
+  sample_n_frames: 81
+  fps: 24
+  num_workers: 8
+  shuffle: True
+  drop_last: True 
+  pin_memory: True

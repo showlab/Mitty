@@ -1,0 +1,43 @@
+category: pull_plate
+experiment_project: InteractionVideo-Wan-Robot
+experiment_name: human_to_robot_p1_pull_plate
+seed: 1342
+ckpt_path: null
+model_id: /raid/share_model/Wan2.2-TI2V-5B-Diffusers
+output_root: /raid/workspace1/lc/HumanAndRobot/Output_Model/p1_first/pull_plate
+use_wandb: false
+num_nodes: 1
+training:
+  batch_size: 2
+  max_steps: 5000
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  warmup_steps: 10
+  save_val_interval_steps: 1000
+  accumulate_grad_batches: 2
+  gradient_clip_val: 1.0
+  precision: bf16-mixed
+  accelerator: auto
+  strategy: auto
+  gradient_checkpointing: true
+  benchmark: false
+lora:
+  r: 64
+  alpha: 64
+use_drop_text: true
+drop_prob: 0.1
+dataset:
+  video_root: /raid/workspace1/lc/HumanAndRobot/Datasets/HumanAndRobot_split_category/pull_plate/human
+  video_root2: /raid/workspace1/lc/HumanAndRobot/Datasets/HumanAndRobot_split_category/pull_plate/robot
+  first_root: /raid/workspace1/lc/HumanAndRobot/Datasets/HumanAndRobot_split_category/pull_plate/first_frame
+  height: 224
+  width: 416
+  sample_n_frames: 32
+  fps: 30
+  num_workers: 8
+  shuffle: true
+  drop_last: true
+  pin_memory: true
+config: configs/train_p1.yaml
+num_gpus: 1
+use_lora: true

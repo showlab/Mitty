@@ -1,0 +1,42 @@
+experiment_project: InteractionVideo-Wan-Robot
+experiment_name: human_to_robot_p1_droid
+seed: 1342
+ckpt_path: null
+model_id: /raid/share_model/Wan2.2-TI2V-5B-Diffusers
+output_root: /raid/workspace1/lc/HumanAndRobot/Output_Model/p1_droid/
+use_wandb: false
+num_nodes: 1
+training:
+  batch_size: 2
+  max_steps: 20000
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  warmup_steps: 10
+  save_val_interval_steps: 1000
+  accumulate_grad_batches: 2
+  gradient_clip_val: 1.0
+  precision: bf16-mixed
+  accelerator: auto
+  strategy: auto
+  gradient_checkpointing: true
+  benchmark: false
+lora:
+  r: 64
+  alpha: 64
+use_drop_text: true
+drop_prob: 0.1
+dataset:
+  video_root: /raid/workspace1/lc/HumanAndRobot/Datasets/droid_101_success/droid_101_success
+  video_root2: /raid/workspace1/lc/HumanAndRobot/Datasets/droid_101_success/droid_101_success
+  first_root: /raid/workspace1/lc/HumanAndRobot/Datasets/droid_101_success/first_frame
+  height: 352
+  width: 640
+  sample_n_frames: 31
+  fps: 30
+  num_workers: 8
+  shuffle: true
+  drop_last: true
+  pin_memory: true
+config: configs/train_p1_droid.yaml
+num_gpus: 2
+use_lora: true

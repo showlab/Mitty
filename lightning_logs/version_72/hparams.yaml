@@ -1,0 +1,47 @@
+category: roll
+experiment_project: InteractionVideo-Wan-Robot
+experiment_name: human_to_robot_p2_roll
+seed: 1342
+ckpt_path: /raid/workspace1/lc/HumanAndRobot/Output_Model/p2/push_plate/human_to_robot_p2_push_plate/checkpoints_cond/step=16000.ckpt
+model_id: /raid/share_model/Wan2.2-TI2V-5B-Diffusers
+output_root: /raid/workspace1/lc/HumanAndRobot/Output_Model/p2/roll
+p1_model: /raid/workspace1/lc/HumanAndRobot/Output_Model/p1/roll/human_to_robot_p1_roll/checkpoints/step=1000.ckpt
+p1_r_text: 64
+p1_alpha_text: 64
+p1_r_transf: 64
+p1_alpha_transf: 64
+use_wandb: false
+num_nodes: 1
+training:
+  batch_size: 4
+  max_steps: 18000
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  warmup_steps: 500
+  save_val_interval_steps: 250
+  accumulate_grad_batches: 2
+  gradient_clip_val: 1.0
+  precision: bf16-mixed
+  accelerator: auto
+  strategy: auto
+  gradient_checkpointing: true
+  benchmark: false
+lora:
+  r: 64
+  alpha: 64
+use_drop_text: true
+drop_prob: 0.1
+dataset:
+  video_root: /raid/workspace1/lc/HumanAndRobot/Datasets/HumanAndRobot_split_category/roll/human
+  video_root2: /raid/workspace1/lc/HumanAndRobot/Datasets/HumanAndRobot_split_category/roll/robot
+  first_root: /raid/workspace1/lc/HumanAndRobot/Datasets/HumanAndRobot_split_resolution/robot_first_frame
+  height: 224
+  width: 416
+  sample_n_frames: 32
+  fps: 30
+  num_workers: 8
+  shuffle: true
+  drop_last: true
+  pin_memory: true
+config: .run_configs_p2/train_p2_roll_max=18000.yaml
+num_gpus: 4
