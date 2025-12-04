@@ -1,9 +1,11 @@
+# Mitty
 > **Mitty: Diffusion-based Human-to-Robot Video Generation**
 > <br>
 > [Yiren Song](https://scholar.google.com.hk/citations?user=L2YS0jgAAAAJ), 
 > [Cheng Liu](https://scholar.google.com.hk/citations?hl=zh-CN&user=TvdVuAYAAAAJ), 
+> [Weijia Mao](https://scholar.google.com.hk/citations?hl=zh-CN&user=TvdVuAYAAAAJ), 
 > and 
-> [Mike Zheng Shou](https://sites.google.com/view/showlab)
+> [Mike Zheng Shou](https://scholar.google.com/citations?user=S7bGBmkyNtEC)
 > <br>
 > [Show Lab](https://sites.google.com/view/showlab), National University of Singapore
 > <br>
@@ -40,36 +42,18 @@ pip install -r requirements.txt
 
 ### 1. Pretrained model
 
-The pretrained / fine-tuned Mitty H2R model will be available at:
+The fine-tuned Mitty models will be available at:
 
 - **Model:**
-  - `https://huggingface.co/<YOUR_HF_USERNAME>/mitty-h2r`
+  - `https://huggingface.co/showlab/Mitty_Model`
 
-Example usage with a simple `MittyPipeline` wrapper (adjust to match your actual code):
-
-```python
-import torch
-from mitty.engine.inference import MittyPipeline
-
-pipe = MittyPipeline.from_pretrained(
-    "<YOUR_HF_USERNAME>/mitty-h2r",
-    torch_dtype=torch.float16,
-).to("cuda")
-
-robot_video = pipe(
-    human_video_path="examples/human_demo.mp4",
-    mode="h2r",  # or "hi2r"
-    robot_first_frame="examples/robot_init.png",  # required when mode == "hi2r"
-)
-robot_video.save("outputs/robot_demo.mp4")
-```
 
 ### 2. Dataset
 
 The paired human–robot dataset will be released as a HuggingFace dataset:
 
 - **Dataset:**
-  - `https://huggingface.co/datasets/<YOUR_HF_USERNAME>/mitty-h2r-dataset`
+  - `https://huggingface.co/datasets/showlab/Mitty_Dataset`
 
 A recommended format is:
 
@@ -86,13 +70,31 @@ dataset/
 
 ---
 
-## 🚀 Training
+## 🚀 Training & 🎬 Inference
 
+We provide simple shell scripts to launch training and inference.
 
+### 1. Training
 
----
+Edit `_scripts/train.sh` to set your dataset paths, output directory, and training hyperparameters.  
+Then run:
 
-## 🎬 Inference
+```bash
+bash _scripts/train.sh
+```
+
+This will start training Mitty on the paired human–robot dataset.
+
+### 2. Inference
+
+Edit `_scripts/inference.sh` to point to your trained checkpoint (or the released pretrained model) and specify the input human video / prompt and output directory.  
+Then run:
+
+```bash
+bash _scripts/inference.sh
+```
+
+This will generate corresponding robot videos from the human inputs using the Mitty model.
 
 
 
