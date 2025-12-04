@@ -80,7 +80,7 @@ Edit `_scripts/train.sh` to set your dataset paths, output directory, and traini
 Then run:
 
 ```bash
-bash _scripts/train.sh
+_scripts/train.sh
 ```
 
 This will start training Mitty on the paired human–robot dataset.
@@ -91,7 +91,7 @@ Edit `_scripts/inference.sh` to point to your trained checkpoint (or the release
 Then run:
 
 ```bash
-bash _scripts/inference.sh
+_scripts/inference.sh
 ```
 
 This will generate corresponding robot videos from the human inputs using the Mitty model.
