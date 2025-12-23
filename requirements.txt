@@ -30,7 +30,7 @@ decorator==5.2.1
 decord==0.6.0
 deepspeed==0.17.1
 defusedxml==0.7.1
-diffusers==0.33.0
+diffusers==0.35.1
 docopt==0.6.2
 einops==0.8.1
 eval_type_backport==0.2.2
@@ -104,7 +104,7 @@ overrides==7.7.0
 packaging==25.0
 pandocfilters==1.5.1
 parso==0.8.4
-peft==0.15.2
+peft==0.17.1
 pexpect==4.9.0
 pickleshare==0.7.5
 pillow==10.4.0
