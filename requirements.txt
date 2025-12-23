@@ -96,7 +96,7 @@ networkx==3.2.1
 ninja==1.11.1.4
 notebook==7.4.1
 notebook_shim==0.2.4
-numpy==2.0.1
+numpy==1.26.4
 nvidia-ml-py==12.575.51
 omegaconf==2.3.0
 opencv-python==4.11.0.86

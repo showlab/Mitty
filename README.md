@@ -40,32 +40,55 @@ pip install -r requirements.txt
 
 ## 📦 HuggingFace Models & Datasets
 
-### 1. Pretrained model
+### 1. Download Pretrained Model
 
-The fine-tuned Mitty models will be available at:
+The fine-tuned Mitty model is available at: [showlab/Mitty_Model](https://huggingface.co/showlab/Mitty_Model)
 
-- **Model:**
-  - `https://huggingface.co/showlab/Mitty_Model`
+Download to `ckpt/` directory:
 
+```bash
+mkdir -p ckpt
+huggingface-cli download showlab/Mitty_Model --local-dir ckpt/Mitty_Model
+```
 
-### 2. Dataset
+### 2. Download and Prepare Dataset
 
-The paired human–robot dataset will be released as a HuggingFace dataset:
+The paired human–robot dataset is available at: [showlab/Mitty_Dataset](https://huggingface.co/datasets/showlab/Mitty_Dataset)
 
-- **Dataset:**
-  - `https://huggingface.co/datasets/showlab/Mitty_Dataset`
+Download and extract to `dataset/` directory:
 
-A recommended format is:
+```bash
+# Download dataset
+mkdir -p dataset
+huggingface-cli download showlab/Mitty_Dataset --repo-type dataset --local-dir dataset/tmp
+
+# Extract dataset
+cd dataset
+unzip -q tmp/Human2Robot.zip
+unzip -q tmp/EPIC-KITCHENS.zip
+rm -rf tmp
+cd ..
+```
+
+The dataset will be organized as:
 
 ```text
 dataset/
-  ├── human/
-  │   ├── xxx_00001.mp4
-  │   ├── xxx_00001.txt # prompt
-  │   └── ...
-  ├── robot/
-  │   ├── xxx_00001.mp4
-  │   └── ...
+  ├── Human2Robot/
+  │   ├── human/
+  │   │   ├── xxx_00001.mp4
+  │   │   ├── xxx_00001.txt # prompt
+  │   │   └── ...
+  │   └── robot/
+  │       ├── xxx_00001.mp4
+  │       └── ...
+  └── EPIC-KITCHENS/
+      ├── human/
+      │   ├── xxx_00001.mp4
+      │   └── ...
+      └── robot/
+          ├── xxx_00001.mp4
+          └── ...
 ```
 
 ---
