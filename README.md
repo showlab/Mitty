@@ -51,6 +51,8 @@ mkdir -p ckpt
 huggingface-cli download showlab/Mitty_Model --local-dir ckpt/Mitty_Model
 ```
 
+**Note**: This codebase uses the Diffusers-integrated model format (e.g., `Wan2.2-TI2V-5B-Diffusers`) which includes proper subfolder structure (tokenizer/, text_encoder/, vae/, transformer/, scheduler/).
+
 ### 2. Download and Prepare Dataset
 
 The paired human–robot dataset is available at: [showlab/Mitty_Dataset](https://huggingface.co/datasets/showlab/Mitty_Dataset)
