@@ -10,7 +10,7 @@
 > [Show Lab](https://sites.google.com/view/showlab), National University of Singapore
 > <br>
 
-<a href="https://arxiv.org/abs/2512.17253"><img src="https://img.shields.io/badge/ariXv-xxxx.xxxx-A42C25.svg" alt="arXiv"></a>
+<a href="https://arxiv.org/abs/2512.17253"><img src="https://img.shields.io/badge/ariXv-2512.17253-A42C25.svg" alt="arXiv"></a>
 <a href="https://huggingface.co/showlab/Mitty_Model/tree/main"><img src="https://img.shields.io/badge/🤗_HuggingFace-Model-ffbd45.svg" alt="HuggingFace"></a>
 <a href="https://huggingface.co/datasets/showlab/Mitty_Dataset"><img src="https://img.shields.io/badge/🤗_HuggingFace-Dataset-ffbd45.svg" alt="HuggingFace"></a>
 
